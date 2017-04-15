@@ -5,25 +5,29 @@ class Tree:
         self.right = right
 
     def preOrder(self):
-        print(self.data)
+        returnList = [self.data]
         if self.left:
-            self.left.preOrder()
+            returnList = returnList + self.left.preOrder()
         if self.right:
-            self.right.preOrder()
+            returnList = returnList + self.right.preOrder()
+        return returnList
 
     def postOrder(self):
+        returnList = []
         if self.left:
-            self.left.postOrder()
+            returnList = returnList + self.left.postOrder()
         if self.right:
-            self.right.postOrder()
-        print self.data
+            returnList = returnList + self.right.postOrder()
+        return returnList + [self.data]
 
     def inOrder(self):
+        returnList = []
         if self.left:
-            self.left.inOrder()
-        print self.data
+            returnList = returnList + self.left.inOrder()
+        returnList = returnList + [self.data]
         if self.right:
-            self.right.inOrder()
+            returnList = returnList + self.right.inOrder()
+        return returnList
 
 
 def arrayToTree(array):
@@ -52,8 +56,8 @@ Tree:
 """
 
 print "Pre Order:"
-tree.preOrder()
+print(tree.preOrder())
 print "\nIn Order:"
-tree.inOrder()
+print(tree.inOrder())
 print "\nPost Order:"
-tree.postOrder()
+print(tree.postOrder())
