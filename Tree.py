@@ -29,6 +29,16 @@ class Tree:
             returnList = returnList + self.right.inOrder()
         return returnList
 
+    def binarySearch(self, element):
+        print self.preOrder()
+        # Will tell whether an element is in the tree or not
+        if (self.data == element):
+            return True
+        if (element > self.data and self.right):
+            return self.right.binarySearch(element)
+        if (element < self.data and self.left):
+            return self.left.binarySearch(element)
+        return False
 
 def arrayToTree(array):
     length = len(array)
@@ -61,3 +71,13 @@ print "\nIn Order:"
 print(tree.inOrder())
 print "\nPost Order:"
 print(tree.postOrder())
+print('''
+Binary Search for number 3 in tree above
+(result will be true if element found and false if not)
+''')
+print(tree.binarySearch(3))
+print '''
+Binary Search for number 9 in tree above
+(result will be true if element found and false if not)
+'''
+print(tree.binarySearch(9))
